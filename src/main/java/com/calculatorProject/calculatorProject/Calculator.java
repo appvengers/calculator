@@ -2,6 +2,8 @@ package com.calculatorProject.calculatorProject;
 
 import lombok.*;
 
+import java.math.BigInteger;
+
 @Getter
 @Setter
 public class Calculator {
@@ -20,7 +22,12 @@ public class Calculator {
      */
     public String addTwoNumbers(String numberOne, String numberTwo) {
         try {
-            return String.valueOf(Integer.parseInt(numberOne) + Integer.parseInt(numberTwo));
+            BigInteger numOne = new BigInteger(numberOne);
+            BigInteger numTwo = new BigInteger(numberTwo);
+            BigInteger result = new BigInteger(numOne.add(numTwo).toString());
+
+            return result.toString();
+
         } catch (NumberFormatException ex) {
             return "Invalid input";
         }

@@ -17,7 +17,7 @@ public class CalculatorProjectApplicationTests {
 	@Test
 	public void addTest(){
 		Calculator calculator = new Calculator();
-		Assert.assertEquals(calculator.addTwoNumbers("2", "3"), "5");
+		Assert.assertEquals(calculator.addTwoNumbers("23333333333333", "3"), "23333333333336");
 		Assert.assertEquals(calculator.addTwoNumbers("dos", "tres"), "Invalid input");
 	}
 
