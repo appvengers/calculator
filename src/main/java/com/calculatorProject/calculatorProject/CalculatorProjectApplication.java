@@ -17,12 +17,17 @@ public class CalculatorProjectApplication {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello Spring Boot!";
+        return "Welcome to Kata Inc Calculator!";
     }
 
     @PostMapping(path = "/add-numbers")
     public String addTwoNumbers(@RequestBody Calculator calculator) {
-        return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
+        if (calculator.getOperation().equals("add")) {
+            return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
+        } else {
+            return "wrong operation";
+        }
+
     }
 
 }
