@@ -1,5 +1,6 @@
 package com.calculatorProject.calculatorProject;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +16,8 @@ public class CalculatorProjectApplicationTests {
 
 	@Test
 	public void addTest(){
-
+		Calculator calculator = new Calculator();
+		Assert.assertEquals(calculator.addTwoNumbers("2", "3"), "5");
 	}
 
 }
