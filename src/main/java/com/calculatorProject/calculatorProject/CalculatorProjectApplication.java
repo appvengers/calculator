@@ -20,7 +20,7 @@ public class CalculatorProjectApplication {
         return "Welcome to Kata Inc Calculator!";
     }
 
-    @PostMapping(path = "/add-numbers")
+    @PostMapping(path = "/services/operations/V1")
     public String addTwoNumbers(@RequestBody Calculator calculator) {
         if (calculator.getOperation().equals("add")) {
             return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
