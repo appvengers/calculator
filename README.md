@@ -4,8 +4,11 @@ Description HERE!
 
 ## Build
 
-How to Build Here
+mvn clean install
+mvn appengine:run
 
 ## Authors
+Daniel Tapia
+Rein Obregón
 
 ## Licence
