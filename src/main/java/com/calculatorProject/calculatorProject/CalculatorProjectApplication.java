@@ -4,10 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,32 +22,29 @@ public class CalculatorProjectApplication {
         return "Welcome to Kata Inc Calculator!";
     }
 
+    @CrossOrigin(origins = "/**")
     @PostMapping(path = "/services/operations/V1")
-    public String addTwoNumbers(@RequestBody Calculator calculator) {
-        if (calculator.getOperation().equals("add")) {
-            return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
-        } else {
-            return "wrong operation";
-        }
-
+    public ResponseEntity<CalculatorOperationResponse> operateTwoNumbers(@RequestBody Calculator calculator) {
+        return new ResponseEntity<CalculatorOperationResponse>(calculator.operate(calculator.getFirstNumber(),
+                calculator.getSecondNumber(), calculator.getOperation()), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "/**")
     @PostMapping(path = "/services/operations/V2")
     public ResponseEntity<CalculatorOperationResponse> arithmeticOperation(@RequestBody String operation) {
 
         CalculatorOperationResponse response = new CalculatorOperationResponse();
 
-        Map<Integer, String> map = new HashMap<Integer, String>();
-        map.put(500, "Internal Server Error");
+        Map<String, String> map = new HashMap<>();
+        map.put("500", "Internal Server Error");
+
 
         response.setStatus(false);
         response.setError(map);
-        response.setData("45");
-
+        response.setData(map);
 
 
         return new ResponseEntity<CalculatorOperationResponse>(response, HttpStatus.OK);
-
     }
 
 }

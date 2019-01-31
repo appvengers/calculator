@@ -15,7 +15,7 @@ import java.util.Map;
 public class CalculatorOperationResponse {
 
     private boolean status;
-    private Map<Integer, String> error;
-    private String data;
+    private Map<String, String> error;
+    private Map<String, String> data;
 
 }
