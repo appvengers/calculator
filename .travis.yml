@@ -8,9 +8,9 @@ before_install:
   -in credentials.tar.gz.enc -out credentials.tar.gz -d
 - tar -xzf credentials.tar.gz
 - chmod a+x mvnw
+- mvn -N io.takari:maven:wrapper
 
 script:
-- mvn -N io.takari:maven:wrapper
 - ./mvnw clean install -B
 
 deploy:
@@ -20,5 +20,5 @@ deploy:
     project: dotted-byway-229018
     default: true
     on:
-        all_branches: true
+        branch: devel
 
