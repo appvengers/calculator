@@ -7,6 +7,8 @@ import java.math.BigInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Calculator {

@@ -6,6 +6,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CalculatorProjectApplicationTests {
@@ -21,6 +24,14 @@ public class CalculatorProjectApplicationTests {
 		Assert.assertEquals(calculator.addTwoNumbers("dos", "tres"), "Invalid input");
 	}
 
+	@Test
+	public void responseStructureTest() {
+		CalculatorOperationResponse response = new CalculatorOperationResponse();
+		Map<Integer, String> map = new HashMap<Integer, String>();
+		map.put(500, "Internal Server Error");
+		response.setError(map);
+		response.setData("45");
+	}
 
 	@Test
 	public void addManyNumbersTest(){
