@@ -1,7 +1,6 @@
 package com.calculatorProject.calculatorProject;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigInteger;
 import java.util.regex.Matcher;
