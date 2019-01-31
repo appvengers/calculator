@@ -50,15 +50,6 @@ public class CalculatorProjectApplicationTests {
     }
 
     @Test
-    public void responseStructureTest() {
-        CalculatorOperationResponse response = new CalculatorOperationResponse();
-        Map<Integer, String> map = new HashMap<Integer, String>();
-        map.put(500, "Internal Server Error");
-        response.setError(map);
-        response.setData("45");
-    }
-
-    @Test
     public void addManyNumbersTest() {
         Calculator calculator = new Calculator();
 //		Assert.assertEquals(calculator.calculate("2+8+1"), "");
