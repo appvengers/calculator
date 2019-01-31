@@ -21,5 +21,11 @@ public class CalculatorProjectApplicationTests {
 		Assert.assertEquals(calculator.addTwoNumbers("dos", "tres"), "Invalid input");
 	}
 
+
+	@Test
+	public void addManyNumbersTest(){
+		Calculator calculator = new Calculator();
+//		Assert.assertEquals(calculator.calculate("2+8+1"), "");
+	}
 }
 
