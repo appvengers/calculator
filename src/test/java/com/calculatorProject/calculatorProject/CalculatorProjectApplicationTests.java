@@ -27,10 +27,8 @@ public class CalculatorProjectApplicationTests {
 	@Test
 	public void responseStructureTest() {
 		CalculatorOperationResponse response = new CalculatorOperationResponse();
-		Map<Integer, String> map = new HashMap<Integer, String>();
-		map.put(500, "Internal Server Error");
-		response.setError(map);
-		response.setData("45");
+		Map<String, String> map = new HashMap<>();
+		map.put("500", "Internal Server Error");
 	}
 }
 

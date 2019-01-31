@@ -40,17 +40,15 @@ public class CalculatorProjectApplication {
 
         CalculatorOperationResponse response = new CalculatorOperationResponse();
 
-        Map<Integer, String> map = new HashMap<Integer, String>();
-        map.put(500, "Internal Server Error");
+        Map<String, String> map = new HashMap<>();
+        map.put("500", "Internal Server Error");
+
 
         response.setStatus(false);
         response.setError(map);
-        response.setData("45");
-
-
+        response.setData(map);
 
         return new ResponseEntity<CalculatorOperationResponse>(response, HttpStatus.OK);
-
     }
 
 }
