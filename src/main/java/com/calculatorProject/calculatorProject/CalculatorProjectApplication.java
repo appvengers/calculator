@@ -22,6 +22,7 @@ public class CalculatorProjectApplication {
         return "Welcome to Kata Inc Calculator!";
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "/services/operations/V1")
     public String operateTwoNumbers(@RequestBody Calculator calculator) {
         return calculator.operate(calculator.getFirstNumber(), calculator.getSecondNumber(), calculator.getOperation());
