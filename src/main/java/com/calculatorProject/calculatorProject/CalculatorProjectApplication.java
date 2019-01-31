@@ -16,7 +16,7 @@ import java.util.Map;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "/**", allowedHeaders = "/**")
 public class CalculatorProjectApplication {
 
     public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class CalculatorProjectApplication {
     public ResponseEntity<CalculatorOperationResponse> operateTwoNumbers(@RequestBody Calculator calculator) {
 
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Access-Control-Allow-Origin", "*");
+        responseHeaders.add("Access-Control-Allow-Origin", "/**");
         return new ResponseEntity<CalculatorOperationResponse>(calculator.operate(calculator.getFirstNumber(),
                 calculator.getSecondNumber(), calculator.getOperation()), responseHeaders, HttpStatus.OK);
     }

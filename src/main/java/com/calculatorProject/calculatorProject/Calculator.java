@@ -68,18 +68,31 @@ public class Calculator {
                 case "divide": // TODO implement divide method
 //                    mapError.put("code", "200");
 //                    mapError.put("message", "OK");
-                    mapData.put("result:",
-                            new BigInteger(new BigInteger(numberOne).divide(new BigInteger(numberTwo)).toString()).toString());
-                    response.setData(mapData);
-                    response.setStatus(true);
-                    response.setError(null);
-                    return response;
+
+                    if (numberTwo.equals("0")) {
+                        mapData.put("result:", "Can't divide by zero");
+
+                        response.setData(mapData);
+                        response.setStatus(false);
+                        mapError.put("code", "500");
+                        mapError.put("message", "Can't divide by zero");
+                        response.setError(mapError);
+                        return response;
+                    } else {
+                        mapData.put("result:",
+                                new BigInteger(new BigInteger(numberOne).divide(new BigInteger(numberTwo)).toString()).toString());
+                        response.setData(mapData);
+                        response.setStatus(true);
+                        response.setError(null);
+                        return response;
+                    }
+
                 default:
 //                    mapError.put("code", "200");
 //                    mapError.put("message", "OK");
-                    mapData.put("result:", "default");
+                    mapData.put("result:", "Invalid Input Data");
                     response.setData(mapData);
-                    response.setStatus(true);
+                    response.setStatus(false);
                     response.setError(null);
                     return response;
             }
