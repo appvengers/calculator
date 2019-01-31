@@ -49,16 +49,16 @@ public class CalculatorProjectApplicationTests {
 //        Assert.assertEquals(calculator.operate("2", "3", "other"), "Wrong operation");
 //    }
 
-    @Test
-    public void addManyNumbersTest() {
-        Calculator calculator = new Calculator();
-//		Assert.assertEquals(calculator.calculate("2+8+1"), "");
-    }
-
-    @Test
-    public void newResponseFormat() {
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.operate("3", "2", "add").getData());
-    }
+//    @Test
+//    public void addManyNumbersTest() {
+//        Calculator calculator = new Calculator();
+////		Assert.assertEquals(calculator.calculate("2+8+1"), "");
+//    }
+//
+//    @Test
+//    public void newResponseFormat() {
+//        Calculator calculator = new Calculator();
+//        System.out.println(calculator.operate("3", "2", "add").getData());
+//    }
 }
 
