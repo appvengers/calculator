@@ -11,8 +11,12 @@ before_install:
 script:
 - "./mvnw clean install -B"
 
+before_deploy:
+- mv target/calculatorProject*.war target/calculatorProject.war
+
 deploy:
   provider: gae
+  file: target/calculatorProject.war
   skip_cleanup: true
   keyfile: e55a2abaa177.json
   project: dotted-byway-229018
