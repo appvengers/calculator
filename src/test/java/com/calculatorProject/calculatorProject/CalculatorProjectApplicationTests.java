@@ -32,5 +32,11 @@ public class CalculatorProjectApplicationTests {
 		response.setError(map);
 		response.setData("45");
 	}
+
+	@Test
+	public void addManyNumbersTest(){
+		Calculator calculator = new Calculator();
+//		Assert.assertEquals(calculator.calculate("2+8+1"), "");
+	}
 }
 
