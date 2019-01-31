@@ -24,18 +24,7 @@ public class CalculatorProjectApplication {
 
     @PostMapping(path = "/services/operations/V1")
     public String operateTwoNumbers(@RequestBody Calculator calculator) {
-        switch (calculator.getOperation()){
-            case "add":
-                return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
-            case "subtract": // TODO implement subtract method
-                return null;
-            case "multiply": // TODO implement multiply method
-                return null;
-            case "divide": // TODO implement divide method
-                return null;
-            return "wrong operation";
-
-        }
+        return calculator.operate(calculator.getFirstNumber(), calculator.getSecondNumber(), calculator.getOperation());
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
@@ -51,6 +40,7 @@ public class CalculatorProjectApplication {
         response.setStatus(false);
         response.setError(map);
         response.setData(map);
+
 
         return new ResponseEntity<CalculatorOperationResponse>(response, HttpStatus.OK);
     }
