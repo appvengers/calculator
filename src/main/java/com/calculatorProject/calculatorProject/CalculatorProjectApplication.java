@@ -22,13 +22,14 @@ public class CalculatorProjectApplication {
         return "Welcome to Kata Inc Calculator!";
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "/**")
     @PostMapping(path = "/services/operations/V1")
-    public String operateTwoNumbers(@RequestBody Calculator calculator) {
-        return calculator.operate(calculator.getFirstNumber(), calculator.getSecondNumber(), calculator.getOperation());
+    public ResponseEntity<CalculatorOperationResponse> operateTwoNumbers(@RequestBody Calculator calculator) {
+        return new ResponseEntity<CalculatorOperationResponse>(calculator.operate(calculator.getFirstNumber(),
+                calculator.getSecondNumber(), calculator.getOperation()), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "/**")
     @PostMapping(path = "/services/operations/V2")
     public ResponseEntity<CalculatorOperationResponse> arithmeticOperation(@RequestBody String operation) {
 
