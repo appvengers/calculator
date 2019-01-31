@@ -39,36 +39,46 @@ public class Calculator {
         try {
             switch (operator) {
                 case "add":
-                    mapError.put("200", "OK");
+//                    mapError.put("code", "200");
+//                    mapError.put("message", "OK");
                     mapData.put("result:",
                             new BigInteger(new BigInteger(numberOne).add(new BigInteger(numberTwo)).toString()).toString());
+                    response.setData(mapData);
                     response.setStatus(true);
                     response.setError(null);
                     return response;
                 case "subtract":
-                    mapError.put("200", "OK");
+//                    mapError.put("code", "200");
+//                    mapError.put("message", "OK");
                     mapData.put("result:",
                             new BigInteger(new BigInteger(numberOne).subtract(new BigInteger(numberTwo)).toString()).toString());
+                    response.setData(mapData);
                     response.setStatus(true);
                     response.setError(null);
                     return response;
                 case "multiply":
-                    mapError.put("200", "OK");
+//                    mapError.put("code", "200");
+//                    mapError.put("message", "OK");
                     mapData.put("result:",
                             new BigInteger(new BigInteger(numberOne).multiply(new BigInteger(numberTwo)).toString()).toString());
+                    response.setData(mapData);
                     response.setStatus(true);
                     response.setError(null);
                     return response;
                 case "divide": // TODO implement divide method
-                    mapError.put("200", "OK");
+//                    mapError.put("code", "200");
+//                    mapError.put("message", "OK");
                     mapData.put("result:",
                             new BigInteger(new BigInteger(numberOne).divide(new BigInteger(numberTwo)).toString()).toString());
+                    response.setData(mapData);
                     response.setStatus(true);
                     response.setError(null);
                     return response;
                 default:
-                    mapError.put("200", "OK");
+//                    mapError.put("code", "200");
+//                    mapError.put("message", "OK");
                     mapData.put("result:", "default");
+                    response.setData(mapData);
                     response.setStatus(true);
                     response.setError(null);
                     return response;
@@ -77,11 +87,9 @@ public class Calculator {
 
         } catch (NumberFormatException ex) {
             mapError.put("500", "Internal server Error NumberFormatException");
-            mapData.put("result:",
-                    new BigInteger(new BigInteger(numberOne).add(new BigInteger(numberTwo)).toString()).toString());
+            mapData.put("result:", "Invalid Input");
             response.setStatus(true);
             response.setError(null);
-
             return response;
         }
     }
