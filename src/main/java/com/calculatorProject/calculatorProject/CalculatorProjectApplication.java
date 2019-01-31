@@ -26,13 +26,19 @@ public class CalculatorProjectApplication {
     }
 
     @PostMapping(path = "/services/operations/V1")
-    public String addTwoNumbers(@RequestBody Calculator calculator) {
-        if (calculator.getOperation().equals("add")) {
-            return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
-        } else {
+    public String operateTwoNumbers(@RequestBody Calculator calculator) {
+        switch (calculator.getOperation()){
+            case "add":
+                return calculator.addTwoNumbers(calculator.getFirstNumber(), calculator.getSecondNumber());
+            case "subtract": // TODO implement subtract method
+                return null;
+            case "multiply": // TODO implement multiply method
+                return null;
+            case "divide": // TODO implement divide method
+                return null;
             return "wrong operation";
-        }
 
+        }
     }
 
     @PostMapping(path = "/services/operations/V2")

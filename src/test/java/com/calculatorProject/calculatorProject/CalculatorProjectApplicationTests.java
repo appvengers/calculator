@@ -30,5 +30,11 @@ public class CalculatorProjectApplicationTests {
 		Map<String, String> map = new HashMap<>();
 		map.put("500", "Internal Server Error");
 	}
+
+	@Test
+	public void addManyNumbersTest(){
+		Calculator calculator = new Calculator();
+//		Assert.assertEquals(calculator.calculate("2+8+1"), "");
+	}
 }
 
