@@ -13,11 +13,12 @@ script:
 
 before_deploy:
 - cp target/calculatorProject*.war target/calculatorProject.war
+- ls target/
 
 deploy:
   provider: gae
   file: target/calculatorProject-0.0.1-SNAPSHOT.war
-  skip_cleanup: true
+  verbosity: debug
   keyfile: e55a2abaa177.json
   project: dotted-byway-229018
   default: true
