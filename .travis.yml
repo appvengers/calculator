@@ -13,9 +13,9 @@ script:
 
 before_deploy:
 - mkdir -p key_file
-- mkdir target/WEB-INF/
-- mv e55a2abaa177.json key_file/
-- cp src/main/webapp/WEB-INF/* target/WEB-INF/  
+- cp target/calculatorProject*.war calculatorProject-0.0.1.war 
+- rm -rf target/
+- mv e55a2abaa177.json key_file/  
  
 deploy:
   provider: gae
