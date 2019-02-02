@@ -20,9 +20,10 @@ before_install:
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then
      curl https://sdk.cloud.google.com | bash;
   fi
+- gcloud -q components update app-engine-java
 # Here we use the decrypted service account credentials to authenticate the command line tool
 - gcloud auth activate-service-account --key-file e55a2abaa177.json
-- gcloud components install app-engine-java
+#- gcloud components install app-engine-java
 # [END auth]
 - mvn install -B -V
 - chmod a+x mvnw
@@ -30,7 +31,6 @@ before_install:
 install:
 # Set the correct project to deploy to
 - gcloud config set project dotted-byway-229018
-#- gcloud -q components update gae-java
 # Install the Python dependencies
 
 script:
