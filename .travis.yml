@@ -22,6 +22,7 @@ before_install:
   fi
 # Here we use the decrypted service account credentials to authenticate the command line tool
 - gcloud auth activate-service-account --key-file e55a2abaa177.json
+- gcloud components install app-engine-java
 # [END auth]
 - mvn install -B -V
 - chmod a+x mvnw
