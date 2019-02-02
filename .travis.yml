@@ -6,6 +6,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_797cb90a1492_key -iv $encrypted_797cb90a1492_iv
   -in e55a2abaa177.json.enc -out e55a2abaa177.json -d
 - mvn install -B -V
+- chmod a+x mvnw
 
 script:
 - mvn clean install
