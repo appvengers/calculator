@@ -38,8 +38,6 @@ install:
 
 script:
 # [START deploy]
-- gcloud components install app-engine-java
-- gcloud -q components update app-engine-java
 # Deploy the app
 - mvn appengine:deploy
 # Run and end to end test
