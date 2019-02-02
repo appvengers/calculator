@@ -21,5 +21,6 @@ deploy:
   keyfile: e55a2abaa177.json
   project: dotted-byway-229018
   default: true
+  skip_cleanup: true
   on:
     branch: devel
