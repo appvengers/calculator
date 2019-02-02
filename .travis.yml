@@ -20,7 +20,6 @@ before_install:
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then
      curl https://sdk.cloud.google.com | bash;
   fi
-#- gcloud -q components update app-engine-java
 # Here we use the decrypted service account credentials to authenticate the command line tool
 - gcloud auth activate-service-account --key-file e55a2abaa177.json
 #- gcloud components install app-engine-java
@@ -36,6 +35,7 @@ install:
 script:
 # [START deploy]
 - gcloud components install app-engine-java
+- gcloud -q components update app-engine-java
 # Deploy the app
 - mvn appengine:deploy
 # Run and end to end test
