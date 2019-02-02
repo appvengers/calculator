@@ -13,6 +13,8 @@ script:
 
 before_deploy:
 - cp target/calculatorProject*.war calculatorProject.war
+- rm -rf target
+- rm -f e55a2abaa177.json
 
 deploy:
   provider: gae
