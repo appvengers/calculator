@@ -2,27 +2,41 @@ sudo: false
 language: java
 jdk: oraclejdk8
 
+cache:
+  directories:
+  - "$HOME/google-cloud-sdk/"
+env:
+- GAE_PYTHONPATH=${HOME}/.cache/google_appengine PATH=$PATH:${HOME}/google-cloud-sdk/bin PYTHONPATH=${PYTHONPATH}:${GAE_PYTHONPATH} CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
 before_install:
+# Install Google App Engine Python SDK
+- if [ ! -d "${GAE_PYTHONPATH}" ]; then
+    python scripts/fetch_gae_sdk.py $(dirname "${GAE_PYTHONPATH}");
+  fi
 - openssl aes-256-cbc -K $encrypted_797cb90a1492_key -iv $encrypted_797cb90a1492_iv
   -in e55a2abaa177.json.enc -out e55a2abaa177.json -d
+
+# If the SDK is not already cached, download it and unpack it
+- if [ ! -d ${HOME}/google-cloud-sdk ]; then
+     curl https://sdk.cloud.google.com | bash;
+  fi
+# Here we use the decrypted service account credentials to authenticate the command line tool
+- gcloud auth activate-service-account --key-file e55a2abaa177.json
+# [END auth]
 - mvn install -B -V
 - chmod a+x mvnw
 
-script:
-- mvn clean install
+install:
+# Set the correct project to deploy to
+- gcloud config set project dotted-byway-229018
+#- gcloud -q components update gae-java
+# Install the Python dependencies
 
-before_deploy:
-- mkdir -p key_file
-- cp target/calculatorProject*.war calculatorProject-0.0.1.war 
-- rm -rf target/
-- mv e55a2abaa177.json key_file/  
- 
-deploy:
-  provider: gae
-  verbosity: debug
-  keyfile: key_file/e55a2abaa177.json
-  project: dotted-byway-229018
-  default: true
-  skip_cleanup: true
-  on:
+script:
+# [START deploy]
+# Deploy the app
+- mvn appengine:deploy
+# Run and end to end test
+on:
     branch: devel
+# [END deploy]
