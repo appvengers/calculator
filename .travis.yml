@@ -12,14 +12,11 @@ script:
 - mvn clean install
 
 before_deploy:
-- cp target/calculatorProject*.war calculatorProject.war
-- rm -rf target
 - mkdir -p key_file
 - mv e55a2abaa177.json key_file/ 
  
 deploy:
   provider: gae
-  file: calculatorProject.war
   verbosity: debug
   keyfile: key_file/e55a2abaa177.json
   project: dotted-byway-229018
