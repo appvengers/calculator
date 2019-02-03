@@ -2,7 +2,7 @@
 
 # Calculator BackEnd Project
 
-Kata Calculadora
+Kata Calculadora Challenge
 
 ## Build
 
