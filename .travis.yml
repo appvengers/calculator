@@ -1,13 +1,22 @@
 sudo: true
 language: java
 jdk: oraclejdk8
+dist: trusty
 
 cache:
   directories:
-  - "$HOME/google-cloud-sdk/"
+  - '$HOME/google-cloud-sdk/'
+  - '$HOME/.m2/repository'
+  - '$HOME/.sonar/cache'
 
 env:
 - CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" GAE_PYTHONPATH=${HOME}/.cache/google_appengine PATH=$PATH:${HOME}/google-cloud-sdk/bin PYTHONPATH=${PYTHONPATH}:${GAE_PYTHONPATH} CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+addons:
+  sonarcloud:
+    organization: "appvengers"
+    token:
+      secure: "oQkz6Q7YvJvQAXs5bh2A/tE+xoVl+VKT8jIer9JhmzqRlslezA545NkccRVPj+f2VhGjPx1LgHJBlYzG7ssqTpQ53EbO7Evhr0PBcR/BXDEvl/6oxy+7LRD+kp4OJVnbsXP++10LDt2/ke7oWgyXzwU1RNmbmsiivYC4/uG1nstIvsDq17GAe52g6ztEA1DPexmfHHqRaoxa6A6fnCMXzxpQ3nlAgAjs4mxZzWTvG1Tue4KOtn0HLfxGEJEu8Rmdozud1eF7l70xps+Ln5PQ7CKnaXNsLz8JLw6jO2CsUVFJ+rroWxmQXhd9/vvongs4kGSF+SXcpKTdG2WFkMUPoQdx8m/rSjG0Yj8xP3sOTJvJ58iN0JxQ6R842rVapvUkaoXT8TBk0kRFQpcNhwr45CoYaTqF5shbTgmwfAOxWGb1bIiW+6XgwCzacMg5/jVd5Cq+Xe8q6icRAMz1wY+GQhb/l8wDfFXPgVhIsgiWscM4heb7veHfF8xibko36fYrOafCHqK6QAVsGDHQ9+hqRM/aTfAiT+hDinX0hQhqBVXKcqb49yR0GelBOiXYMGtKA8V7PbrmautImwWZRdcl5pPqZ9fidHtPNWk1MiCpptTzUnADx2XUj0ORDAwNSN6mx4O+HtMx4izG/z7PJE9TT9xIqic6DtTYrXpdTheOXZY="
 
 before_install:
 # Install Google App Engine Python SDK
@@ -26,7 +35,6 @@ before_install:
 - sudo apt-get install google-cloud-sdk-app-engine-java
 # Here we use the decrypted service account credentials to authenticate the command line tool
 - gcloud auth activate-service-account --key-file e55a2abaa177.json
-#- gcloud components install app-engine-java
 # [END auth]
 - mvn install -B -V
 - chmod a+x mvnw
@@ -38,6 +46,7 @@ install:
 
 script:
 # [START deploy]
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 # Deploy the app
 - mvn appengine:deploy
 # Run and end to end test
