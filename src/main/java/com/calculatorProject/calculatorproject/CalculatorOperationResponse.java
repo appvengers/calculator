@@ -1,4 +1,4 @@
-package com.calculatorProject.calculatorProject;
+package com.calculatorProject.calculatorproject;
 
 
 import lombok.AllArgsConstructor;
