@@ -41,7 +41,7 @@ before_install:
 
 install:
 # Set the correct project to deploy to
-- gcloud services set project dotted-byway-229018
+- gcloud config set project dotted-byway-229018
 # Install the Python dependencies
 
 script:
