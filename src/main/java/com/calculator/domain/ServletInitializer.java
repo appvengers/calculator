@@ -1,4 +1,4 @@
-package com.calculatorProject.calculatorproject;
+package com.calculator.domain;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
