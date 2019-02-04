@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,8 +70,9 @@ public class Calculator {
                         response.setError(mapError);
                         return response;
                     } else {
-                        mapData.put("result",
-                                new BigInteger(new BigInteger(numberOne).divide(new BigInteger(numberTwo)).toString()).toString());
+                        BigDecimal bid = new BigDecimal( new BigDecimal(numberOne).divide(new BigDecimal(numberTwo)).toString());
+                        bid = bid.setScale(0, RoundingMode.UP);
+                        mapData.put("result", bid.toString());
                         response.setData(mapData);
                         response.setStatus(true);
                         response.setError(null);
@@ -77,7 +80,7 @@ public class Calculator {
                     }
 
                 default:
-                    mapData.put("result", "Invalid Input Data");
+                    mapData.put("result", "Invalid Input Data, this operation is not supported");
                     response.setData(mapData);
                     response.setStatus(false);
                     response.setError(null);
@@ -87,9 +90,10 @@ public class Calculator {
 
         } catch (NumberFormatException ex) {
             mapError.put("500", "Internal server Error NumberFormatException");
-            mapData.put("result", "Invalid Input");
-            response.setStatus(true);
-            response.setError(null);
+            mapData.put("result", "Invalid Input Data, This calculator can only operate with round numbers");
+            response.setStatus(false);
+            response.setData(mapData);
+            response.setError(mapError);
             return response;
         }
     }
