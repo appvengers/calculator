@@ -1,0 +1,9 @@
+runtime: java8
+
+runtime_config:
+   jdk: openjdk8
+   server: jetty9
+
+handlers:
+- url: /.*
+  script: this field is required, but ignored

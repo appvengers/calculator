@@ -1,7 +1,5 @@
 /target/
-.mvn/wrapper/maven-wrapper.jar
-mvnw
-mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -31,5 +29,5 @@ credentials.tar.gz
 api_key.py
 e5a6d2d5a5ce.json
 
-# Vs Code
+## Vs Code
 .vscode/*
