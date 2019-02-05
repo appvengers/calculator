@@ -40,6 +40,7 @@ public class CalculatorControllerTests {
                 .build();
     }
 
+    //this method is to test a post endpoint
     @Test
     public void testPostController() throws Exception {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
