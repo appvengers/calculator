@@ -1,21 +1,31 @@
 package com.calculator.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Map;
 
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class CalculatorOperationResponse {
 
     private boolean status;
-    private Map<String, String> error;
-    private Map<String, String> data;
+    private ErrorResponse error;
+    private ResultResponse data;
 
+}
+
+@AllArgsConstructor
+@Data
+class ResultResponse {
+    private String result;
+
+
+}
+
+@AllArgsConstructor
+@Data
+class ErrorResponse {
+    private String code;
+    private String message;
 }
