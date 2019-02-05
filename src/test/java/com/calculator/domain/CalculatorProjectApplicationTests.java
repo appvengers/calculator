@@ -1,9 +1,6 @@
 package com.calculator.domain;
 
 
-import org.junit.Assert;
-
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +31,7 @@ public class CalculatorProjectApplicationTests {
     public void testInnerClass() {
         CalculatorOperationResponse calresponse = new CalculatorOperationResponse(true,
             new ErrorResponse("30", "Error Prueba"),
-            new ResultResponse("33333"));
+            new DataResponse("33333"));
 
         System.out.println("clase " + calresponse.toString());
 
